@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Force-Cropped YouTube Embed</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        background: black;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .container iframe {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        transform: translate(-50%, -50%) scale(1.20); /* <== Tweak this scale */
-        transform-origin: center center;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <iframe
-        src="https://www.youtube.com/embed/KW7NyTgZwyA?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Miami Beach Live Cams Rotator</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    .cam { position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+           transform: scale(1.2); transform-origin: center center; }
+    .cam:not(:first-child) { opacity: 0; transition: opacity 2s ease-in-out; }
+  </style>
+</head>
+<body>
+  <!-- Miami Beach live stream iframes -->
+  <iframe class="cam" src="https://video.earthcam.com/fecnetwork/miaminewscafe.flv/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://video1.surfline.com/stream/12345.m3u8?autoplay=true" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://livestream.chariff.com/lincolnroad/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="http://avalonhotel.com/cam/oceandrive.mjpeg" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://www.miami-beach.gov/pier_cam/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://www.portmiamiwebcam.com/live-stream?autoplay=1" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://sunnyislesbeachmiami.com/piercam/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
+  <iframe class="cam" src="https://video.earthcam.com/fecnetwork/haulover/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
+  <script>
+    const cams = document.querySelectorAll('.cam');
+    let index = 0;
+    setInterval(() => {
+      cams[index].style.opacity = 0;
+      index = (index + 1) % cams.length;
+      cams[index].style.opacity = 1;
+    }, 10000);
+  </script>
+</body>
 </html>
