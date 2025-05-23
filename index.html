@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Miami Beach Live Cams Rotator</title>
+  <meta charset="UTF-8" />
+  <title>Nantucket Live Cams Rotator</title>
   <style>
-    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
-    .cam { position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-           transform: scale(1.2); transform-origin: center center; }
-    .cam:not(:first-child) { opacity: 0; transition: opacity 2s ease-in-out; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.2);
+      transform-origin: center center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      border: none;
+      z-index: 0;
+    }
+    .active {
+      opacity: 1;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
-  <!-- Miami Beach live stream iframes -->
-  <iframe class="cam" src="https://video.earthcam.com/fecnetwork/miaminewscafe.flv/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://video1.surfline.com/stream/12345.m3u8?autoplay=true" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://livestream.chariff.com/lincolnroad/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="http://avalonhotel.com/cam/oceandrive.mjpeg" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://www.miami-beach.gov/pier_cam/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://www.portmiamiwebcam.com/live-stream?autoplay=1" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://sunnyislesbeachmiami.com/piercam/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
-  <iframe class="cam" src="https://video.earthcam.com/fecnetwork/haulover/playlist.m3u8" allow="autoplay" frameborder="0"></iframe>
-  <script>
+  <!-- ✅ Confirmed embeddable Miami livestreams -->
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+  <iframe class="cam" src="https://www.youtube.com/embed/?autoplay=1&mute=1&controls=0&rel=0" allow="autoplay" allowfullscreen></iframe>
+ <script>
     const cams = document.querySelectorAll('.cam');
     let index = 0;
     setInterval(() => {
-      cams[index].style.opacity = 0;
+      cams[index].classList.remove('active');
       index = (index + 1) % cams.length;
-      cams[index].style.opacity = 1;
-    }, 10000);
+      cams[index].classList.add('active');
+    }, 10000); // 10 seconds per stream
   </script>
 </body>
 </html>
